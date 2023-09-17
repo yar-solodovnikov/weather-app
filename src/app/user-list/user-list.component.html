@@ -1,0 +1,14 @@
+<div class="row text-center empty-user-list-msg" [hidden]="usersList.length">
+  <a class="empty-user-list-link" [routerLink]="['/user']">Add</a> some users to see users list
+</div>
+
+<div class="row user-list" [hidden]="!usersList.length">
+  <app-user-card
+    class="card-item"
+    *ngFor="let user of usersList"
+    [displayMode]="true"
+    [user]="user"
+    (reloadUsers)="reloadUsers()"
+    >
+  </app-user-card>
+</div>

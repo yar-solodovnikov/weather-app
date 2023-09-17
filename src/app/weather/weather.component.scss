@@ -1,0 +1,15 @@
+.weather{
+  background-color: rgb(13, 110, 253);
+  color: #fff;
+  border-radius: 3px;
+  width: 260px;
+  margin: auto;
+  margin-top: 15px;
+  padding: 15px;
+  &-body{
+    font-size: 14px;
+  }
+  &-item{
+    margin: auto;
+  }
+}

@@ -1,0 +1,35 @@
+<div class="user-card card">
+  <div class="card-body">
+
+    <div class="card-title user-card-top row">
+      <div class="col">
+        <img class="card-img-top user-card-img" alt="{{user.name?.title}}. {{user.name?.first}} {{user.name?.last}}" src="{{user.picture?.thumbnail}}" />
+      </div>
+      <div class="col user-card-name">
+        <fa-icon [icon]="getIcon(user.gender!)"></fa-icon> {{user.name?.title}}. {{user.name?.first}} {{user.name?.last}}
+      </div>
+    </div>
+
+    <div class="user-card-info">
+      <p class="user-card-email text-center">
+        {{user.email}}
+      </p>
+      <address class="card-text user-card-address">
+        {{user.location?.country}}, {{user.location?.state}}, {{user.location?.city}}, {{user.location?.street?.name}} {{user.location?.street?.number}}, {{user.location?.postcode}}
+      </address>
+    </div>
+
+    <div class="user-card-bottom">
+      <button  [hidden]="displayMode" class="btn btn-primary btn-sm" (click)="onGetWeather(user.location?.coordinates!)">
+        Get Weather
+      </button>
+      <button [hidden]="displayMode || hideSave" class="btn btn-success btn-sm" (click)="onSave(user)">
+        Save
+      </button>
+      <button [hidden]="!displayMode" class="btn btn-danger btn-sm btn-right" (click)="onDelete(user)">
+        Remove
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,21 @@
+.card-item{
+  width: auto;
+  padding-bottom: 15px;
+}
+
+.empty-user-list{
+  &-msg{
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    margin: auto;
+    width: fit-content;
+  }
+  &-link{
+    display: contents;
+  }
+}
+
+.user-list{
+  justify-content: center;
+}

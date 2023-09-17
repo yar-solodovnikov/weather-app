@@ -1,0 +1,9 @@
+.alert-notification{
+  position: fixed;
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  left: calc(50% - 200px);
+  z-index: 8;
+  top: 30px;
+}

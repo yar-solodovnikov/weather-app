@@ -1,13 +1,13 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-primary app-navbar">
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary app-navbar" id="navbar">
   <div class="container-fluid">
     <span class="navbar-brand">Weather App</span>
     <div class="navbar-collapse">
       <ul class="navbar-nav me-auto">
         <li class="nav-item" role="presentation">
-          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">Users List</a>
+          <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/']">Users</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/user']">User</a>
+          <a class="nav-link" routerLinkActive="active" [routerLink]="['/saved-users']">Saved Users</a>
         </li>
       </ul>
     </div>

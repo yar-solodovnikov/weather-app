@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { UserCardService } from './user-card.service';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Coordinates, UserCard } from './user-card';
 import { faMale, faFemale } from '@fortawesome/free-solid-svg-icons';
 import { Gender } from './user-card'
@@ -13,7 +12,7 @@ import { AlertType } from '../notification/notification';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss']
 })
-export class UserCardComponent implements OnInit {
+export class UserCardComponent {
   @Input() user: UserCard = {}
   @Input() displayMode = false
   @Output() getWeather:EventEmitter<Coordinates> = new EventEmitter()
@@ -21,18 +20,9 @@ export class UserCardComponent implements OnInit {
   hideSave = false
 
   constructor(
-    private userCardService: UserCardService,
     private storage: LocalServiceService,
     private notification: NotificationService
     ) {
-  }
-
-  ngOnInit(): void {
-    if (!Object.keys(this.user).length) {
-      this.userCardService.getUser().subscribe((user) => {
-        this.user = user.results[0]
-      })
-    }
   }
 
   onSave(user: UserCard) {

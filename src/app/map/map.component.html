@@ -1,0 +1,20 @@
+<div class="map-container">
+  <div class="map-frame">
+    <div id="map"></div>
+  </div>
+</div>
+
+<div class="col map-address">
+  <div class="text-center">
+    <b>{{user.name?.title}}. {{user.name?.first}} {{user.name?.last}}</b>
+  </div>
+  <address>
+    <b>Address:</b> {{user.location?.country}}, {{user.location?.state}}, {{user.location?.city}}, {{user.location?.street?.name}} {{user.location?.street?.number}}, {{user.location?.postcode}}
+  </address>
+  <div>
+    <b>Latitude:</b> {{user.location?.coordinates?.latitude}}
+  </div>
+  <div>
+    <b>Longitude:</b> {{user.location?.coordinates?.longitude}}
+  </div>
+</div>

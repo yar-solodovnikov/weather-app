@@ -1,5 +1,9 @@
-<div [hidden]="hideWeather" class="row">
+<div class="row" [hidden]="hideWeather">
   <div class="col">
+    <div class="col">
+      <app-map [user]="user"></app-map>
+    </div>
+
     <div class="weather">
       <div class="weather-title">
         <fa-icon [icon]="getWeatherIcon(weather.current_weather.weathercode)"></fa-icon> Weather Details
@@ -30,7 +34,7 @@
       <tbody>
         <tr *ngFor="let hour of weather.hourly?.time; index as i">
           <td>{{ i }}</td>
-          <td>{{ hour | date:'dd MMM, yyyy - H-mm' }}</td>
+          <td>{{ hour | date:'dd MMM yyyy, H-mm' }}</td>
           <td>{{ weather.hourly?.temperature_2m?.[i] }}</td>
         </tr>
       </tbody>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Coordinates, UserCard } from '../user-card/user-card';
+import { UserCard } from '../user-card/user-card';
 import { UserService } from './user.service';
 
 @Component({
@@ -9,9 +9,13 @@ import { UserService } from './user.service';
 })
 export class UserComponent implements OnInit {
   users: Array<UserCard> = []
-  coordinates: Coordinates = {
-    latitude: '0',
-    longitude: '0'
+  user: UserCard = {
+    location: {
+      coordinates: {
+        latitude: '0',
+        longitude: '0'
+      }
+    }
   }
 
   constructor(private userService: UserService) {}
@@ -23,8 +27,8 @@ export class UserComponent implements OnInit {
   }
 
 
-  getWeather(coordinates: Coordinates) {
-    this.coordinates = coordinates
+  getWeather(user: UserCard) {
+    this.user = user
     const el = document.getElementById('navbar')
     el?.scrollIntoView()
   }

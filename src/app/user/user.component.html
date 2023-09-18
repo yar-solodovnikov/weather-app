@@ -1,11 +1,11 @@
 <div class="col">
-  <app-weather [coordinates]="coordinates" ></app-weather>
+  <app-weather [user]="user"></app-weather>
 </div>
 <div class="row users-list">
   <app-user-card
     class="col"
     *ngFor="let user of users"
     [user]="user"
-    (getWeather)="getWeather($event)"
+    (getWeather)="getWeather(user)"
   ></app-user-card>
 </div>

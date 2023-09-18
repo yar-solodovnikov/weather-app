@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Coordinates } from '../user-card/user-card';
+import { Coordinates, UserCard } from '../user-card/user-card';
 import { WeatherService } from './weather.service';
 import { Weather } from './weather';
 import { 
@@ -20,9 +20,13 @@ import {
   styleUrls: ['./weather.component.scss']
 })
 export class WeatherComponent implements OnChanges {
-  @Input() coordinates: Coordinates = {
-    latitude: '0',
-    longitude: '0'
+  @Input() user: UserCard = {
+    location: {
+      coordinates: {
+        latitude: '0',
+        longitude: '0'
+      }
+    }
   }
   hideWeather = true
   weather:Weather = {
@@ -40,8 +44,8 @@ export class WeatherComponent implements OnChanges {
     private weatherService: WeatherService) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes['coordinates'].firstChange) this.hideWeather = false
-    this.weatherService.getWeather(changes['coordinates'].currentValue).subscribe((newWeather) => {
+    if (!changes['user'].firstChange) this.hideWeather = false
+    this.weatherService.getWeather(changes['user'].currentValue.location.coordinates).subscribe((newWeather) => {
       this.weather = newWeather
     })
   }

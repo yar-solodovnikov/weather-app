@@ -25,13 +25,13 @@ export interface Name {
 }
 
 export interface Location {
-  street: Street
-  city: string
-  state: string
-  country: string
-  postcode: number
+  street?: Street
+  city?: string
+  state?: string
+  country?: string
+  postcode?: number
   coordinates: Coordinates
-  timezone: Timezone
+  timezone?: Timezone
 }
 
 export interface Street {

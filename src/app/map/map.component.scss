@@ -1,0 +1,30 @@
+.map{
+  height: 250px;
+  width: 450px;
+  &-container {
+    position: relative;
+    height: 350px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+  }
+  &-frame {
+    border: 2px solid black;
+    height: 100%;
+  }
+  &-address{
+    font-size: 14px;
+    width: 260px;
+    margin: auto;
+    background-color: rgb(13, 110, 253);
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+  }
+}
+
+#map {
+  height: 100%;
+}

@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 })
 export class WeatherService {
   private url = environment.weatherAPIUrl
-  private defaultParams = '?&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&current_weather=true'
+  private defaultParams = '?&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&current_weather=true&hourly=temperature_2m'
 
   constructor(private http: HttpClient) {}
 

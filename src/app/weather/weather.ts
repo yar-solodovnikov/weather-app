@@ -7,6 +7,8 @@ export interface Weather {
   timezone_abbreviation?: string
   elevation?: number
   current_weather: CurrentWeather
+  hourly_units?: HourlyUnits
+  hourly?: Hourly
   daily_units?: DailyUnits
   daily: Daily
 }
@@ -18,6 +20,16 @@ export interface CurrentWeather {
   weathercode: number
   is_day?: number
   time?: string
+}
+
+export interface HourlyUnits {
+  time: string
+  temperature_2m: string
+}
+
+export interface Hourly {
+  time: string[]
+  temperature_2m: number[]
 }
 
 export interface DailyUnits {

@@ -11,6 +11,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { WeatherComponent } from './weather/weather.component';
 import { UserComponent } from './user/user.component';
 import { NotificationComponent } from './notification/notification.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MapComponent } from './map/map.component'
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { NotificationComponent } from './notification/notification.component';
     WeatherComponent,
     UserComponent,
     NotificationComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]

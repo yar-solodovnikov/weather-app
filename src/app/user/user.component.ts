@@ -1,18 +1,35 @@
-import { Component } from '@angular/core';
-import { Coordinates } from '../user-card/user-card';
+import { Component, OnInit } from '@angular/core';
+import { UserCard } from '../user-card/user-card';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {
-  coordinates: Coordinates = {
-    latitude: '0',
-    longitude: '0'
+export class UserComponent implements OnInit {
+  users: Array<UserCard> = []
+  user: UserCard = {
+    location: {
+      coordinates: {
+        latitude: '0',
+        longitude: '0'
+      }
+    }
   }
 
-  getWeather(coordinates: Coordinates) {
-    this.coordinates = coordinates
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.userService.getUser().subscribe((user) => {
+      this.users = user.results
+    })
+  }
+
+
+  getWeather(user: UserCard) {
+    this.user = user
+    const el = document.getElementById('navbar')
+    el?.scrollIntoView()
   }
 }

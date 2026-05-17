@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Coordinates } from '../user-card/user-card';
+import { Component, Input, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { UserCard } from '../user-card/user-card';
 import { WeatherService } from './weather.service';
 import { Weather } from './weather';
 import { 
@@ -13,17 +13,23 @@ import {
   faCloudBolt,
   faCloudMeatball
  } from '@fortawesome/free-solid-svg-icons';
+ import { DEFAULT_REQUEST_DELAY } from './weather.constants'
 
 @Component({
   selector: 'app-weather',
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnChanges {
-  @Input() coordinates: Coordinates = {
-    latitude: '0',
-    longitude: '0'
+export class WeatherComponent implements OnChanges, OnDestroy {
+  @Input() user: UserCard = {
+    location: {
+      coordinates: {
+        latitude: '0',
+        longitude: '0'
+      }
+    }
   }
+  private intervalId: ReturnType<typeof setTimeout> | undefined
   hideWeather = true
   weather:Weather = {
     current_weather: {
@@ -40,8 +46,22 @@ export class WeatherComponent implements OnChanges {
     private weatherService: WeatherService) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes['coordinates'].firstChange) this.hideWeather = false
-    this.weatherService.getWeather(changes['coordinates'].currentValue).subscribe((newWeather) => {
+    if (this.intervalId) clearInterval(this.intervalId)
+    if (!changes['user'].firstChange) {
+      this.hideWeather = false
+      this.getWeather(changes)
+      this.intervalId = setInterval(() => {
+        this.getWeather(changes)
+      }, DEFAULT_REQUEST_DELAY)
+    }
+  }
+
+  ngOnDestroy () {
+    clearInterval(this.intervalId)
+  }
+
+  getWeather (changes: SimpleChanges) {
+    this.weatherService.getWeather(changes['user'].currentValue.location.coordinates).subscribe((newWeather) => {
       this.weather = newWeather
     })
   }
